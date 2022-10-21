@@ -10,7 +10,13 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.composable
+import androidx.navigation.compose.rememberNavController
+import com.github.mariemmezghani.calorietracker.navigation.navigate
 import com.github.mariemmezghani.calorietracker.ui.theme.CaloryTrackerTheme
+import com.github.mariemmezghani.core.navigation.Route
+import com.github.mariemmezghani.core.util.UiEvent
 import com.github.mariemmezghani.onboarding_presentation.welcome.WelcomeScreen
 
 class MainActivity : ComponentActivity() {
@@ -19,17 +25,45 @@ class MainActivity : ComponentActivity() {
         setContent {
             CaloryTrackerTheme {
 
-                WelcomeScreen()}
+                val navController = rememberNavController()
+                NavHost(
+                    navController= navController,
+                    startDestination = Route.WELCOME
+                ){
+                    composable(Route.WELCOME){
+                        WelcomeScreen (navController::navigate)
+                    }
+                    composable(Route.AGE){
+
+                    }
+                }
+
 
         }
     }
 }
+}
 
 
 
+/*
 @Preview(showBackground = true)
 @Composable
 fun DefaultPreview() {
-    CaloryTrackerTheme { WelcomeScreen() }
+    CaloryTrackerTheme {
 
+        val navController = rememberNavController()
+        NavHost(
+            navController= navController,
+            startDestination = Route.WELCOME
+        ){
+            composable(Route.WELCOME){
+                WelcomeScreen (navController::navigate)
+            }
+            composable(Route.AGE){
+
+            }
+        }
 }
+}
+*/
