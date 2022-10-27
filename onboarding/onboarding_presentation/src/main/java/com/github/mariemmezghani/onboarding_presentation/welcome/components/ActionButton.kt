@@ -1,6 +1,5 @@
 package com.github.mariemmezghani.onboarding_presentation.welcome.components
 
-import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.Button
 import androidx.compose.material.MaterialTheme
@@ -11,19 +10,19 @@ import androidx.compose.ui.unit.dp
 
 @Composable
 fun ActionButton(
-    text:String,
-    onClick: ()-> Unit,
+    text: String,
+    onClick: () -> Unit,
     modifier: Modifier,
-    enabled: Boolean=true,
+    enabled: Boolean = true,
     textStyle: androidx.compose.ui.text.TextStyle = MaterialTheme.typography.button
-){
+) {
     Button(
-        onClick=onClick,
-        modifier= Modifier.padding(16.dp),
-        enabled=enabled
-    ){
+        onClick = onClick,
+        modifier = Modifier.padding(16.dp),
+        enabled = enabled
+    ) {
         Text(
-            text= text
+            text = text
         )
     }
 }
