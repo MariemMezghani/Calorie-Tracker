@@ -17,7 +17,7 @@ import androidx.compose.ui.unit.dp
 import com.github.mariemmezghani.core_ui.LocalSpacing
 
 @Composable
-fun SelectedButton(
+fun SelectableButton(
     text: String,
     modifier: Modifier = Modifier,
     color: Color,
