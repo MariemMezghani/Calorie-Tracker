@@ -16,6 +16,7 @@ import com.github.mariemmezghani.core.R
 import com.github.mariemmezghani.core.util.UiEvent
 import com.github.mariemmezghani.core_ui.LocalSpacing
 import com.github.mariemmezghani.onboarding_presentation.welcome.components.ActionButton
+import com.github.mariemmezghani.onboarding_presentation.welcome.components.UnitTextField
 
 
 @Composable
@@ -54,15 +55,16 @@ fun AgeScreen(
 
             Spacer(modifier = Modifier.height(16.dp))
 
+            UnitTextField(value=viewModel.age, onValueChange = viewModel::saveAge, unit= stringResource(R.string.years))
+
 
 
             ActionButton(
                 text = stringResource(R.string.next),
                 onClick = { viewModel.onNextClicked() },
-                modifier = Modifier.align(Alignment.CenterHorizontally)
+                modifier = Modifier.align(Alignment.BottomEnd)
             )
         }
-
 
     }
 
