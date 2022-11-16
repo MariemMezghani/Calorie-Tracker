@@ -16,6 +16,7 @@ import com.github.mariemmezghani.core.navigation.Route
 import com.github.mariemmezghani.onboarding_presentation.welcome.GenderScreen
 import com.github.mariemmezghani.onboarding_presentation.welcome.WelcomeScreen
 import com.github.mariemmezghani.onboarding_presentation.welcome.age.AgeScreen
+import com.github.mariemmezghani.onboarding_presentation.welcome.height.HeightScreen
 import dagger.hilt.android.AndroidEntryPoint
 
 
@@ -47,6 +48,20 @@ class MainActivity : ComponentActivity() {
                         }
                         composable(Route.AGE) {
                             AgeScreen(
+                                scaffoldState = scaffoldState,
+                                onNavigate = navController::navigate
+                            )
+
+                        }
+                        composable(Route.HEIGHT) {
+                            HeightScreen(
+                                scaffoldState = scaffoldState,
+                                onNavigate = navController::navigate
+                            )
+
+                        }
+                        composable(Route.Activity) {
+                            HeightScreen(
                                 scaffoldState = scaffoldState,
                                 onNavigate = navController::navigate
                             )

@@ -1,4 +1,4 @@
-package com.github.mariemmezghani.onboarding_presentation.welcome.age
+package com.github.mariemmezghani.onboarding_presentation.welcome.height
 
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -19,18 +19,18 @@ import javax.inject.Inject
 
 
 @HiltViewModel
-class AgeViewModel @Inject constructor(private val preferences: Preferences, private val filterOutDigits: FilterOutDigits) : ViewModel() {
+class HeightViewModel @Inject constructor(private val preferences: Preferences, private val filterOutDigits: FilterOutDigits) : ViewModel() {
 
-    var age by mutableStateOf<String>("20")
+    var height by mutableStateOf<String>("80")
         private set
 
     private var _uiEvent = Channel<UiEvent>()
     val uiEvent = _uiEvent.receiveAsFlow()
 
 
-    fun onAgeEntered(text: String) {
+    fun onHeightEntered(text: String) {
         if (text.length <= 3) {
-            age = filterOutDigits(text)
+            height = filterOutDigits(text)
 
         }
     }
@@ -38,16 +38,16 @@ class AgeViewModel @Inject constructor(private val preferences: Preferences, pri
     fun onNextClicked() {
 
         viewModelScope.launch {
-            val age = age.toIntOrNull() ?: kotlin.run {
+            val height = height.toIntOrNull() ?: kotlin.run {
 
-                _uiEvent.send(UiEvent.ShowSnackbar(UiText.ResourceString(R.string.error_age_cant_be_empty)))
+                _uiEvent.send(UiEvent.ShowSnackbar(UiText.ResourceString(R.string.error_height_cant_be_empty)))
 
                 return@launch
 
             }
 
-            preferences.saveAge(age)
-            _uiEvent.send(UiEvent.Navigation(Route.HEIGHT))
+            preferences.saveHeight(height)
+            _uiEvent.send(UiEvent.Navigation(Route.Activity))
         }
     }
 

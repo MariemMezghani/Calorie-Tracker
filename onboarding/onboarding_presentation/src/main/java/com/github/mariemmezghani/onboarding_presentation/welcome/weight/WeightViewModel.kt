@@ -1,4 +1,4 @@
-package com.github.mariemmezghani.onboarding_presentation.welcome.age
+package com.github.mariemmezghani.onboarding_presentation.welcome.weight
 
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -19,18 +19,18 @@ import javax.inject.Inject
 
 
 @HiltViewModel
-class AgeViewModel @Inject constructor(private val preferences: Preferences, private val filterOutDigits: FilterOutDigits) : ViewModel() {
+class WeightViewModel @Inject constructor(private val preferences: Preferences, private val filterOutDigits: FilterOutDigits) : ViewModel() {
 
-    var age by mutableStateOf<String>("20")
+    var weight by mutableStateOf<String>("80")
         private set
 
     private var _uiEvent = Channel<UiEvent>()
     val uiEvent = _uiEvent.receiveAsFlow()
 
 
-    fun onAgeEntered(text: String) {
+    fun onWeightEntered(text: String) {
         if (text.length <= 3) {
-            age = filterOutDigits(text)
+            weight = filterOutDigits(text)
 
         }
     }
@@ -38,16 +38,16 @@ class AgeViewModel @Inject constructor(private val preferences: Preferences, pri
     fun onNextClicked() {
 
         viewModelScope.launch {
-            val age = age.toIntOrNull() ?: kotlin.run {
+            val weight = weight.toIntOrNull() ?: kotlin.run {
 
-                _uiEvent.send(UiEvent.ShowSnackbar(UiText.ResourceString(R.string.error_age_cant_be_empty)))
+                _uiEvent.send(UiEvent.ShowSnackbar(UiText.ResourceString(R.string.whats_your_weight)))
 
                 return@launch
 
             }
 
-            preferences.saveAge(age)
-            _uiEvent.send(UiEvent.Navigation(Route.HEIGHT))
+            preferences.saveHeight(weight)
+            _uiEvent.send(UiEvent.Navigation(Route.Activity))
         }
     }
 
