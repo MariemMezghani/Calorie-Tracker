@@ -79,13 +79,13 @@ fun GenderScreen(
                 )
             }
 
-            ActionButton(
-                text = stringResource(R.string.next),
-                onClick = {viewModel.onNextClicked()},
-                modifier = Modifier.align(Alignment.CenterHorizontally)
-            )
-        }
 
+        }
+        ActionButton(
+            text = stringResource(R.string.next),
+            onClick = {viewModel.onNextClicked()},
+            modifier = Modifier.align(Alignment.BottomEnd)
+        )
 
     }
 

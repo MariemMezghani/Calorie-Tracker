@@ -1,9 +1,6 @@
 package com.github.mariemmezghani.onboarding_presentation.welcome.components
 
-import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.text.BasicTextField
 
 import androidx.compose.foundation.text.KeyboardOptions
@@ -11,6 +8,7 @@ import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.layout.LastBaseline
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.sp
@@ -30,18 +28,20 @@ fun UnitTextField(
 
 ){
     val spacing= LocalSpacing.current
-    Row (horizontalArrangement = Arrangement.Center){
+    Row (modifier= modifier, horizontalArrangement = Arrangement.Center){
 
         BasicTextField(value= value,
             onValueChange= onValueChange,
             textStyle= style,
-            modifier=modifier,
+            modifier= Modifier
+                .width(IntrinsicSize.Min)
+                .alignBy(LastBaseline),
             keyboardOptions = KeyboardOptions(keyboardType=KeyboardType.Number),
             singleLine= true)
 
         Spacer(modifier = Modifier.width(spacing.spaceSmall))
 
-        Text(text = unit)
+        Text(text = unit, modifier= Modifier.alignBy(LastBaseline))
 
     }
 

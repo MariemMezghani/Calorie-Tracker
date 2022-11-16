@@ -12,13 +12,13 @@ import androidx.compose.ui.unit.dp
 fun ActionButton(
     text: String,
     onClick: () -> Unit,
-    modifier: Modifier,
+    modifier: Modifier= Modifier,
     enabled: Boolean = true,
     textStyle: androidx.compose.ui.text.TextStyle = MaterialTheme.typography.button
 ) {
     Button(
         onClick = onClick,
-        modifier = Modifier.padding(16.dp),
+        modifier = modifier,
         enabled = enabled
     ) {
         Text(
