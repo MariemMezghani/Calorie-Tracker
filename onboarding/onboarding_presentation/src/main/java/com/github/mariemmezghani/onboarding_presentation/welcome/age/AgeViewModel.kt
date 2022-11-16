@@ -3,13 +3,13 @@ package com.github.mariemmezghani.onboarding_presentation.welcome.age
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
-import androidx.core.text.isDigitsOnly
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.github.mariemmezghani.core.domain.preferences.Preferences
-import com.github.mariemmezghani.core.util.UiEvent
 import com.github.mariemmezghani.core.R
+import com.github.mariemmezghani.core.domain.preferences.Preferences
+import com.github.mariemmezghani.core.domain.usecases.FilterOutDigits
 import com.github.mariemmezghani.core.navigation.Route
+import com.github.mariemmezghani.core.util.UiEvent
 import com.github.mariemmezghani.core.util.UiText
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.channels.Channel
@@ -19,7 +19,7 @@ import javax.inject.Inject
 
 
 @HiltViewModel
-class AgeViewModel @Inject constructor(private val preferences: Preferences) : ViewModel() {
+class AgeViewModel @Inject constructor(private val preferences: Preferences, private val filterOutDigits: FilterOutDigits) : ViewModel() {
 
     var age by mutableStateOf<String>("20")
         private set
@@ -28,9 +28,9 @@ class AgeViewModel @Inject constructor(private val preferences: Preferences) : V
     val uiEvent = _uiEvent.receiveAsFlow()
 
 
-    fun saveAge(text: String) {
+    fun onAgeEntered(text: String) {
         if (text.length <= 3) {
-            age = text.filter { it.isDigit() }
+            age = filterOutDigits(text)
 
         }
     }

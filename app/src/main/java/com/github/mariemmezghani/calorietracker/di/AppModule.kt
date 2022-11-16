@@ -5,6 +5,7 @@ import android.content.Context.MODE_PRIVATE
 import android.content.SharedPreferences
 import com.github.mariemmezghani.core.domain.DefaultPreferences
 import com.github.mariemmezghani.core.domain.preferences.Preferences
+import com.github.mariemmezghani.core.domain.usecases.FilterOutDigits
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -29,5 +30,10 @@ object AppModule {
         return DefaultPreferences(sharedPreferences)
     }
 
+    @Singleton
+    @Provides
+    fun provideFilterOutDigits():FilterOutDigits{
+        return FilterOutDigits()
+    }
 
 }
