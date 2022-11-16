@@ -47,7 +47,7 @@ class HeightViewModel @Inject constructor(private val preferences: Preferences, 
             }
 
             preferences.saveHeight(height)
-            _uiEvent.send(UiEvent.Navigation(Route.Activity))
+            _uiEvent.send(UiEvent.Navigation(Route.WEIGHT))
         }
     }
 
