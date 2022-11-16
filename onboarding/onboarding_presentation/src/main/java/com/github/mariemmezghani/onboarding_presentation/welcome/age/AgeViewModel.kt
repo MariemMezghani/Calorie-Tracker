@@ -3,6 +3,7 @@ package com.github.mariemmezghani.onboarding_presentation.welcome.age
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
+import androidx.core.text.isDigitsOnly
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.github.mariemmezghani.core.domain.preferences.Preferences
@@ -29,7 +30,7 @@ class AgeViewModel @Inject constructor(private val preferences: Preferences) : V
 
     fun saveAge(text: String) {
         if (text.length <= 3) {
-            age = text
+            age = text.filter { it.isDigit() }
 
         }
     }
