@@ -8,4 +8,5 @@ object Route {
     const val WEIGHT = "weight"
     const val Activity = "activity"
     const val GOAL = "goal"
+    const val NUTRIENT = "nutrient"
 }

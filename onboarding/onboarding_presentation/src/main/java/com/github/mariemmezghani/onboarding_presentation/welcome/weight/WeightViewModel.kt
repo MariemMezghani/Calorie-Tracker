@@ -18,10 +18,11 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 
+
 @HiltViewModel
 class WeightViewModel @Inject constructor(private val preferences: Preferences, private val filterOutDigits: FilterOutDigits) : ViewModel() {
 
-    var weight by mutableStateOf<String>("80")
+    var weight by mutableStateOf<String>("60.0")
         private set
 
     private var _uiEvent = Channel<UiEvent>()

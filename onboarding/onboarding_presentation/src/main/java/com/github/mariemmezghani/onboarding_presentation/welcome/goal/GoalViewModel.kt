@@ -1,4 +1,4 @@
-package com.github.mariemmezghani.onboarding_presentation.welcome.activity
+package com.github.mariemmezghani.onboarding_presentation.welcome.goal
 
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -6,6 +6,7 @@ import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.github.mariemmezghani.core.domain.model.ActivityLevel
+import com.github.mariemmezghani.core.domain.model.GoalType
 import com.github.mariemmezghani.core.domain.preferences.Preferences
 import com.github.mariemmezghani.core.navigation.Route
 import com.github.mariemmezghani.core.util.UiEvent
@@ -17,25 +18,26 @@ import javax.inject.Inject
 
 
 @HiltViewModel
-class ActivityViewModel @Inject constructor(private val preferences: Preferences) : ViewModel() {
+class GoalViewModel @Inject constructor(private val preferences: Preferences) : ViewModel() {
 
 
-    var selectedActivty by mutableStateOf<ActivityLevel>(ActivityLevel.Low)
+    var selectedGoal by mutableStateOf<GoalType>(GoalType.KeepWeight)
         private set
 
     private val _uiEvent = Channel<UiEvent.Navigation>()
 
     val uiEvent = _uiEvent.receiveAsFlow()
 
-    fun onActivityLevelSelected(activityLevel: ActivityLevel) {
-        selectedActivty = activityLevel
+    fun onGoalSelected(goalType: GoalType) {
+        selectedGoal = goalType
     }
 
     fun onNextClicked(){
-        preferences.saveActivityLevel(selectedActivty)
+        preferences.saveGoalType(selectedGoal)
         viewModelScope.launch{
-            _uiEvent.send(UiEvent.Navigation(Route.GOAL))
+            _uiEvent.send(UiEvent.Navigation(Route.NUTRIENT))
         }
     }
+
 
 }

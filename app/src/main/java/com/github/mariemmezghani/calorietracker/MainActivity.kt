@@ -15,6 +15,7 @@ import com.github.mariemmezghani.calorietracker.ui.theme.CaloryTrackerTheme
 import com.github.mariemmezghani.core.navigation.Route
 import com.github.mariemmezghani.onboarding_presentation.welcome.ActivityScreen
 import com.github.mariemmezghani.onboarding_presentation.welcome.GenderScreen
+import com.github.mariemmezghani.onboarding_presentation.welcome.GoalScreen
 import com.github.mariemmezghani.onboarding_presentation.welcome.WelcomeScreen
 import com.github.mariemmezghani.onboarding_presentation.welcome.age.AgeScreen
 import com.github.mariemmezghani.onboarding_presentation.welcome.height.HeightScreen
@@ -72,6 +73,14 @@ class MainActivity : ComponentActivity() {
 
                         composable(Route.Activity) {
                             ActivityScreen(
+                                onNavigate = navController::navigate
+                            )
+
+                        }
+
+
+                        composable(Route.GOAL) {
+                            GoalScreen(
                                 onNavigate = navController::navigate
                             )
 
