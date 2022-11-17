@@ -51,9 +51,9 @@ fun GoalScreen(
             verticalArrangement = Arrangement.Center
                 ){
 
-            Text(stringResource(id= R.string.lose_keep_or_gain_weight), style= MaterialTheme.typography.h4)
+            Text(stringResource(id= R.string.lose_keep_or_gain_weight), style= MaterialTheme.typography.h3)
 
-            Spacer(modifier= Modifier.height(16.dp))
+            Spacer(Modifier.height(spacing.spaceMedium))
 
             Row {
                 SelectableButton(
@@ -67,7 +67,6 @@ fun GoalScreen(
                         )
                 )
                 Spacer(Modifier.width(spacing.spaceMedium))
-
                 SelectableButton(
                     text = stringResource(R.string.keep),
                     color = MaterialTheme.colors.primaryVariant,

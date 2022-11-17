@@ -12,6 +12,7 @@ import androidx.compose.ui.unit.dp
 import com.github.mariemmezghani.core.R
 import com.github.mariemmezghani.core.navigation.Route
 import com.github.mariemmezghani.core.util.UiEvent
+import com.github.mariemmezghani.core_ui.LocalSpacing
 import com.github.mariemmezghani.onboarding_presentation.welcome.components.ActionButton
 
 
@@ -25,10 +26,10 @@ fun WelcomeScreen(onNavigate: (UiEvent.Navigation) -> Unit) {
         Text(
             text = stringResource(R.string.welcome_text),
             textAlign= TextAlign.Center,
-            style= MaterialTheme.typography.h4
+            style= MaterialTheme.typography.h3
 
         )
-        Spacer(modifier= Modifier.height(16.dp))
+        Spacer(modifier= Modifier.height(LocalSpacing.current.spaceMedium))
         ActionButton(
             text= stringResource(R.string.lets_go),
             onClick = { onNavigate(UiEvent.Navigation(Route.GENDER)) },

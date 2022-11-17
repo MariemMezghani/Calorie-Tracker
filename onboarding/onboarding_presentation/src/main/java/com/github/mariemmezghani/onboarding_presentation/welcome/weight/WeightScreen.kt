@@ -50,10 +50,10 @@ fun WeightScreen(
 
             Text(
                 stringResource(id = R.string.whats_your_weight),
-                style = MaterialTheme.typography.h4
+                style = MaterialTheme.typography.h3
             )
 
-            Spacer(modifier = Modifier.height(16.dp))
+            Spacer(modifier = Modifier.height(LocalSpacing.current.spaceMedium))
 
             UnitTextField(value=viewModel.weight, onValueChange = viewModel::onWeightEntered, unit= stringResource(R.string.kg))
 

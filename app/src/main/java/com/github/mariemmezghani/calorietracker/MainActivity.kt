@@ -19,9 +19,9 @@ import com.github.mariemmezghani.onboarding_presentation.welcome.GoalScreen
 import com.github.mariemmezghani.onboarding_presentation.welcome.WelcomeScreen
 import com.github.mariemmezghani.onboarding_presentation.welcome.age.AgeScreen
 import com.github.mariemmezghani.onboarding_presentation.welcome.height.HeightScreen
+import com.github.mariemmezghani.onboarding_presentation.welcome.nutrient.NutrientScreen
 import com.github.mariemmezghani.onboarding_presentation.welcome.weight.WeightScreen
 import dagger.hilt.android.AndroidEntryPoint
-
 
 
 @AndroidEntryPoint
@@ -35,7 +35,8 @@ class MainActivity : ComponentActivity() {
 
                 val navController = rememberNavController()
                 val scaffoldState = rememberScaffoldState()
-                Scaffold( modifier= Modifier.fillMaxSize(),
+                Scaffold(
+                    modifier = Modifier.fillMaxSize(),
                     scaffoldState = scaffoldState
 
                 ) {
@@ -83,6 +84,19 @@ class MainActivity : ComponentActivity() {
                             GoalScreen(
                                 onNavigate = navController::navigate
                             )
+
+                        }
+
+
+                        composable(Route.NUTRIENT) {
+                            NutrientScreen(
+                                onNavigate = navController::navigate,
+                                scaffoldState = scaffoldState
+                            )
+
+                        }
+
+                        composable(Route.TRACKER) {
 
                         }
                     }

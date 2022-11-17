@@ -50,10 +50,10 @@ fun AgeScreen(
 
             Text(
                 stringResource(id = R.string.whats_your_age),
-                style = MaterialTheme.typography.h4
+                style = MaterialTheme.typography.h3
             )
 
-            Spacer(modifier = Modifier.height(16.dp))
+            Spacer(modifier = Modifier.height(LocalSpacing.current.spaceMedium))
 
             UnitTextField(value=viewModel.age, onValueChange = viewModel::onAgeEntered, unit= stringResource(R.string.years))
 

@@ -50,9 +50,9 @@ fun GenderScreen(
             verticalArrangement = Arrangement.Center
                 ){
 
-            Text(stringResource(id= R.string.whats_your_gender), style= MaterialTheme.typography.h4)
+            Text(stringResource(id= R.string.whats_your_gender), style= MaterialTheme.typography.h3)
 
-            Spacer(modifier= Modifier.height(16.dp))
+            Spacer(modifier= Modifier.height(LocalSpacing.current.spaceMedium))
 
             Row {
                 SelectableButton(

@@ -30,8 +30,8 @@ class WeightViewModel @Inject constructor(private val preferences: Preferences, 
 
 
     fun onWeightEntered(text: String) {
-        if (text.length <= 3) {
-            weight = filterOutDigits(text)
+        if (text.length <= 5) {
+            weight = text
 
         }
     }
@@ -39,15 +39,15 @@ class WeightViewModel @Inject constructor(private val preferences: Preferences, 
     fun onNextClicked() {
 
         viewModelScope.launch {
-            val weight = weight.toIntOrNull() ?: kotlin.run {
+            val weight = weight.toFloatOrNull() ?: kotlin.run {
 
-                _uiEvent.send(UiEvent.ShowSnackbar(UiText.ResourceString(R.string.whats_your_weight)))
+                _uiEvent.send(UiEvent.ShowSnackbar(UiText.ResourceString(R.string.error_weight_cant_be_empty)))
 
                 return@launch
 
             }
 
-            preferences.saveHeight(weight)
+            preferences.saveWeight(weight)
             _uiEvent.send(UiEvent.Navigation(Route.Activity))
         }
     }

@@ -1,4 +1,4 @@
-package com.github.mariemmezghani.onboarding_presentation.welcome.height
+package com.github.mariemmezghani.onboarding_presentation.welcome.nutrient
 
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.MaterialTheme
@@ -20,9 +20,9 @@ import com.github.mariemmezghani.onboarding_presentation.welcome.components.Unit
 
 
 @Composable
-fun HeightScreen(
+fun NutrientScreen(
     onNavigate: (UiEvent.Navigation) -> Unit,
-    viewModel: HeightViewModel = hiltViewModel(),
+    viewModel: NutrientViewModel = hiltViewModel(),
     scaffoldState: ScaffoldState
 ) {
 
@@ -49,19 +49,35 @@ fun HeightScreen(
         ) {
 
             Text(
-                stringResource(id = R.string.whats_your_height),
+                stringResource(id = R.string.what_are_your_nutrient_goals),
                 style = MaterialTheme.typography.h3
             )
 
             Spacer(modifier = Modifier.height(LocalSpacing.current.spaceMedium))
 
-            UnitTextField(value=viewModel.height, onValueChange = viewModel::onHeightEntered, unit= stringResource(R.string.cm))
+            UnitTextField(
+                value = viewModel.state.carbRatio,
+                onValueChange = { carb -> viewModel.onEvent(NutrientEvent.OnCarbEntered(carb)) },
+                unit = stringResource(R.string.percent_carbs)
+            )
+            Spacer(modifier = Modifier.height(LocalSpacing.current.spaceSmall))
+            UnitTextField(
+                value = viewModel.state.proteinRatio,
+                onValueChange = { protein -> viewModel.onEvent(NutrientEvent.OnProteinEntered(protein)) },
+                unit = stringResource(R.string.percent_proteins)
+            )
+            Spacer(modifier = Modifier.height(LocalSpacing.current.spaceSmall))
+            UnitTextField(
+                value = viewModel.state.fatRatio,
+                onValueChange =  { fat -> viewModel.onEvent(NutrientEvent.OnFatEntered(fat)) },
+                unit = stringResource(R.string.percent_fats)
+            )
 
 
             }
             ActionButton(
                 text = stringResource(R.string.next),
-                onClick = { viewModel.onNextClicked() },
+                onClick = { viewModel.onEvent(NutrientEvent.OnNextClicked) },
                 modifier = Modifier.align(Alignment.BottomEnd)
             )
 
