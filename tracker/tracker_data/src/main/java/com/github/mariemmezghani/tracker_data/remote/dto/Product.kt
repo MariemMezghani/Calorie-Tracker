@@ -1,4 +1,4 @@
-package com.github.mariemmezghani.tracker_data.dto
+package com.github.mariemmezghani.tracker_data.remote.dto
 
 import com.squareup.moshi.Json
 

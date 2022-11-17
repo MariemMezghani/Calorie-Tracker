@@ -1,5 +1,5 @@
-package com.github.mariemmezghani.tracker_data
-import com.github.mariemmezghani.tracker_data.dto.SearchDto
+package com.github.mariemmezghani.tracker_data.remote
+import com.github.mariemmezghani.tracker_data.remote.dto.SearchDto
 import retrofit2.http.GET
 import retrofit2.http.Query
 
