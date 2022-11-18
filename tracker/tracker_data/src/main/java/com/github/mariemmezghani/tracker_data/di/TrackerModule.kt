@@ -1,5 +1,8 @@
-package com.github.mariemmezghani.tracker_data.remote.di
+package com.github.mariemmezghani.tracker_data.di
 
+import android.app.Application
+import androidx.room.Room
+import com.github.mariemmezghani.tracker_data.local.TrackerDatabase
 import com.github.mariemmezghani.tracker_data.remote.FoodApiInterface
 import dagger.Module
 import dagger.Provides
@@ -38,4 +41,19 @@ object TrackerModule {
             .build()
             .create()
     }
+
+    @Provides
+    @Singleton
+    fun provideDatabase(app:Application):TrackerDatabase{
+
+        return Room.databaseBuilder(
+            app,
+            TrackerDatabase::class.java,
+            "tracker_db"
+        ).build()
+
+
+    }
+
+
     }
