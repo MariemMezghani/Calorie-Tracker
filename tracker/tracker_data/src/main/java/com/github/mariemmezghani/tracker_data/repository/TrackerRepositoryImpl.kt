@@ -37,7 +37,7 @@ class TrackerRepositoryImpl(val api:FoodApiInterface, val db:TrackerDao):Tracker
         db.deleteTrackedFood(food.mapToTrackedFoodEntity())
     }
 
-    override suspend fun getFoodOfDay(date: LocalDate):Flow<List<TrackedFood>> {
+    override  fun getFoodOfDay(date: LocalDate):Flow<List<TrackedFood>> {
         return db.queryTrackedFood(date.dayOfMonth, date.monthValue,date.year).map { entities ->
             entities.map { it.mapToTrackedFood() }
         }

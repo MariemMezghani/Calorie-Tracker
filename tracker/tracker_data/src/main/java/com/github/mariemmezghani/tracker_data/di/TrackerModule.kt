@@ -52,10 +52,7 @@ object TrackerModule {
             app,
             TrackerDatabase::class.java,
             "tracker_db"
-        ).build(
-
-
-        )
+        ).build()
 
 
     }
