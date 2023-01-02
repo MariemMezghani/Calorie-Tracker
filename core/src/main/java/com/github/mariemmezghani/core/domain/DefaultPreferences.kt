@@ -14,11 +14,20 @@ import com.github.mariemmezghani.core.domain.preferences.Preferences.Companion.G
 import com.github.mariemmezghani.core.domain.preferences.Preferences.Companion.GOALTYPE_KEY
 import com.github.mariemmezghani.core.domain.preferences.Preferences.Companion.HEIGHT_KEY
 import com.github.mariemmezghani.core.domain.preferences.Preferences.Companion.PROTEINRATIO_KEY
+import com.github.mariemmezghani.core.domain.preferences.Preferences.Companion.SHOULDSHOW_KEY
 import com.github.mariemmezghani.core.domain.preferences.Preferences.Companion.WEIGHT_KEY
 
 class DefaultPreferences(val sharedPref: SharedPreferences) : Preferences {
     override fun saveGender(gender: Gender) {
         sharedPref.edit().putString(GENDER_KEY, gender.name).apply()
+    }
+
+    override fun saveShouldShowOnBoarding(shouldShow: Boolean) {
+        sharedPref.edit().putBoolean(SHOULDSHOW_KEY, shouldShow).apply()
+    }
+
+    override fun loadShouldShowOnBoarding(): Boolean {
+        return sharedPref.getBoolean(SHOULDSHOW_KEY, true)
     }
 
     override fun saveAge(age: Int) {

@@ -17,6 +17,8 @@ interface Preferences {
     fun fatRatio(ratio: Float)
     fun saveGoalType(goalType: GoalType)
     fun loadUserInfo(): UserInfo
+    fun saveShouldShowOnBoarding(shouldShow:Boolean)
+    fun loadShouldShowOnBoarding():Boolean
 
     companion object{
         const val AGE_KEY = "age"
@@ -28,5 +30,6 @@ interface Preferences {
         const val CARBRATIO_KEY = "carb_ratio"
         const val FATRATIO_KEY = "fat_ratio"
         const val GOALTYPE_KEY = "goal_type"
+        const val SHOULDSHOW_KEY = "should_show"
     }
 }

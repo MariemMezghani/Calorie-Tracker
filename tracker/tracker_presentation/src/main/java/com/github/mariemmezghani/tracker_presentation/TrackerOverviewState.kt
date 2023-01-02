@@ -1,6 +1,7 @@
 package com.github.mariemmezghani.tracker_presentation
 
 import com.github.mariemmezghani.tracker_domain.model.TrackedFood
+import java.time.LocalDate
 
 data class TrackerOverviewState(
     val totalCalories: Int = 0,
@@ -12,5 +13,6 @@ data class TrackerOverviewState(
     val proteinGoal: Int = 0,
     val fatGoal: Int = 0,
     val trackedFoodList: List<TrackedFood> = emptyList(),
-    val mealList: List<Meal> = defaultList
+    val mealList: List<Meal> = defaultList,
+    val date :LocalDate = LocalDate.now()
 )
