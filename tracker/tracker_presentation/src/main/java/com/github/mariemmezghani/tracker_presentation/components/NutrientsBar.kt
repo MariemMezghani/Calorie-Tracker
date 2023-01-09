@@ -9,6 +9,9 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.geometry.CornerRadius
 import androidx.compose.ui.geometry.Size
+import com.github.mariemmezghani.calorietracker.ui.theme.CarbColor
+import com.github.mariemmezghani.calorietracker.ui.theme.FatColor
+import com.github.mariemmezghani.calorietracker.ui.theme.ProteinColor
 
 
 @Composable
@@ -66,11 +69,17 @@ fun NtrientsBar(
             val proteinWidthSize = proteinWidthRatio.value * size.width
 
             drawRoundRect(
+                size = size,
+                color = background,
+                cornerRadius = CornerRadius(100f)
+            )
+
+            drawRoundRect(
                 size = Size(
                     width = fatWidthSize + carbsWithSize + proteinWidthSize,
                     height = size.height
                 ),
-                color = caloriesExceededError,
+                color = FatColor,
                 cornerRadius = CornerRadius(100f)
             )
             drawRoundRect(
@@ -79,7 +88,7 @@ fun NtrientsBar(
                     width = carbsWithSize + proteinWidthSize,
                     height = size.height
                 ),
-                color = caloriesExceededError,
+                color = CarbColor,
                 cornerRadius = CornerRadius(100f)
             )
             drawRoundRect(
@@ -88,13 +97,13 @@ fun NtrientsBar(
                     width = proteinWidthSize,
                     height = size.height
                 ),
-                color = caloriesExceededError,
+                color = ProteinColor,
                 cornerRadius = CornerRadius(100f)
             )
-        }
+        }else{
 
         drawRoundRect(size = size, color = caloriesExceededError, cornerRadius = CornerRadius(100f))
-
+        }
 
     }
 
