@@ -4,6 +4,7 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.MaterialTheme
+import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -47,13 +48,23 @@ fun NutrienHeader(
                 modifier = Modifier.align(Alignment.Bottom)
             )
 
-            UnitDisplay(
-                amount = state.caloriesGoal,
-                unit = stringResource(R.string.kcal),
-                amountTextSize = 40.sp,
-                amountColor = MaterialTheme.colors.onPrimary,
-                unitTextColor = MaterialTheme.colors.onPrimary
-            )
+            Column {
+
+                Text(
+                    text = stringResource(R.string.your_goal),
+                    style = MaterialTheme.typography.body2,
+                    color = MaterialTheme.colors.onPrimary,
+                )
+
+                UnitDisplay(
+                    amount = state.caloriesGoal,
+                    unit = stringResource(R.string.kcal),
+                    amountTextSize = 40.sp,
+                    amountColor = MaterialTheme.colors.onPrimary,
+                    unitTextColor = MaterialTheme.colors.onPrimary
+                )
+            }
+
 
         }
 
@@ -70,7 +81,10 @@ fun NutrienHeader(
 
         Spacer(Modifier.height(spacing.spaceLarge))
 
-        Row {
+        Row(
+            modifier = Modifier.fillMaxWidth(),
+            horizontalArrangement = Arrangement.SpaceBetween
+        ) {
 
             NutrientBarInfo(
                 name = stringResource(R.string.fat),
