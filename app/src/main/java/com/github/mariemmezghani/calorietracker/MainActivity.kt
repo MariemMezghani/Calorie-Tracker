@@ -21,6 +21,7 @@ import com.github.mariemmezghani.onboarding_presentation.welcome.age.AgeScreen
 import com.github.mariemmezghani.onboarding_presentation.welcome.height.HeightScreen
 import com.github.mariemmezghani.onboarding_presentation.welcome.nutrient.NutrientScreen
 import com.github.mariemmezghani.onboarding_presentation.welcome.weight.WeightScreen
+import com.github.mariemmezghani.tracker_presentation.TrackerOverviewScreen
 import dagger.hilt.android.AndroidEntryPoint
 
 
@@ -97,6 +98,7 @@ class MainActivity : ComponentActivity() {
                         }
 
                         composable(Route.TRACKER) {
+                            TrackerOverviewScreen(onNavigate = navController::navigate)
 
                         }
                     }
